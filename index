@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网站导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .nav-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .nav-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .nav-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>欢迎来到我的网站</h1>
+            <p class="subtitle">探索我的作品和项目</p>
+        </header>
+        
+        <div class="nav-grid">
+            <a href="#about" class="nav-card">
+                <h3>📖 关于我</h3>
+                <p>了解我的背景和技能</p>
+            </a>
+            
+            <a href="#projects" class="nav-card">
+                <h3>💼 项目</h3>
+                <p>查看我的代表作品</p>
+                <a href=test.html>测试</a>
+            </a>
+            
+            <a href="#skills" class="nav-card">
+                <h3>⚙️ 技能</h3>
+                <p>我掌握的技术栈</p>
+                <quote>此处有意留空。因为暂时太菜了。</quote>
+            </a>
+            
+            <a href="#blog" class="nav-card">
+                <h3>📝 博客</h3>
+                <p>分享知识和经验</p>
+            </a>
+            
+            <a href="#contact" class="nav-card">
+                <h3>📧 联系我</h3>
+                <p>寻求合作和反馈</p>
+            </a>
+            
+            <a href="#resources" class="nav-card">
+                <h3>🔗 资源</h3>
+                <p>有用的工具和链接</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
