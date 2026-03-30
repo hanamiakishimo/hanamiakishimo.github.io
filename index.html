@@ -140,5 +140,19 @@
             </a>
         </div>
     </div>
+    <section id="about">
+    <h2>关于我</h2>
+    <p>哈基米今日<span id="date"></span>哈气了吗？</p>
+  </section>
+    <script>
+  function updateDate() {
+    const now = new Date()
+   document.getElementById('date').textContent =
+  new Date().toLocaleDateString('zh-CN')
+  }
+
+  updateDate()
+  setInterval(updateDate, 1000)
+</script>
 </body>
 </html>
