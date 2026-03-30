@@ -165,14 +165,13 @@
     </section>
     </div>
     <script>
-        function updateDate() {
-            const now = new Date()
-            document.getElementById('date').textContent =
-                now.toLocaleDateString('zh-CN')
-        }
-        updateDate()
-        setInterval(updateDate, 1000)
-    </script>
+    function updateDate() {
+        const now = new Date()
+        document.getElementById('date').textContent =
+            now.toLocaleDateString('zh-CN')
+    }
+    updateDate()
+</script>
 </body>
 
 </html>
