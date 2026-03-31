@@ -1,53 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <style>
-         
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667FFF 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .button {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            text-decoration: none;
-            color: red;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter Demo</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f7f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      text-align: center;
+      min-width: 280px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .count {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .plus {
+      background: #8ec5ff;
+    }
+
+    .minus {
+      background: #ffb3b3;
+    }
+
+    .reset {
+      background: #d9d9d9;
+    }
+  </style>
 </head>
-
 <body>
+  <div id="app">
+    <div class="card">
+      <h1>计数器 demo</h1>
+      <div class="count">{{ count }}</div>
 
-    <div id="app">
-        <button class="button" @click="count++">
-              Count is: {{ count }}  计数器
-        </button>
+      <div class="buttons">
+        <button class="minus" @click="decrease">-1</button>
+        <button class="plus" @click="increase">+1</button>
+        <button class="reset" @click="reset">重置</button>
+      </div>
     </div>
-    <script>
-        const { createApp, ref } = Vue
+  </div>
 
-        
-        createApp({
-            setup() {
-                return {
-                    count: ref(0)
-                }
-            }
-        }).mount('#app')
-    </script>
+  <script>
+    const { createApp, ref, watch } = Vue;
+
+    createApp({
+      setup() {
+        const saved = localStorage.getItem('count');
+        const count = ref(saved !== null ? Number(saved) : 0);
+
+        const increase = () => {
+          count.value++;
+        };
+
+        const decrease = () => {
+          count.value--;
+        };
+
+        const reset = () => {
+          count.value = 0;
+        };
+
+        watch(count, (newValue) => {
+          localStorage.setItem('count', newValue);
+        });
+
+        return {
+          count,
+          increase,
+          decrease,
+          reset
+        };
+      }
+    }).mount('#app');
+  </script>
 </body>
-
 </html>
