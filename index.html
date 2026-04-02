@@ -171,14 +171,29 @@
   line-height: 1.1;
   transition: transform 0.15s ease, background 0.15s ease;
         }
-        .cnt{
-display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-            padding: 12px;
-  border-radius: 14px;
-        }
+        .cnt {
+  background: #98e68a;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+}
+
+.cnt h2 {
+  margin: 0 0 16px;
+  font-size: 2rem;
+  color: #222;
+}
+
+.cnt p {
+  margin: 12px 0;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.cnt a {
+  color: #4b2bbd;
+  text-decoration: underline;
+}
     </style>
 </head>
 
@@ -235,10 +250,12 @@ display: flex;
         <h2>关于我</h2>
         <p>哈基米今日<span id="date"></span>哈气了吗？</p>
         <p>这里原本应该有一段关于我，但哈基米今天决定先鸽着。</p>
-    </section>
-        <section id="contact">
-        <p>纸飞机<a class="cnt" href="https://t.me/hanami_shouko">这里</a></p>
-        <p>邮箱：<a class="cnt" href="mailto:hanamiakishimo@outlook.com">发送</a></p>
+    <section class="cnt">
+  <h2>抓猫猫</h2>
+  <p>到这里去抓</p>
+
+  <p>纸飞机：<a href="https://t.me/hanami_shouko" target="_blank" rel="noopener noreferrer">这里</a></p>
+  <p>邮箱：<a href="mailto:hanamiakishimo@gmail.com">发送</a></p>
     </section>
 
          <footer>
