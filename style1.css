@@ -73,13 +73,15 @@ p a {
 }
 
 .card p {
-  margin: 0;
+  margin: 0 0 12px;
   font-size: 1.2rem;
   color: #6b6580;
 }
-.q {
-  color:pink;
+
+.card p.q {
+  color: pink;
 }
-.ans{
-  color:green;
+
+.card p.ans {
+  color: green;
 }
