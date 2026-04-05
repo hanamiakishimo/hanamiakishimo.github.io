@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.page-header h1 {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.back-link:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.notes-layout {
+  display: grid;
+  gap: 20px;
+}
+
+.notes-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.notes-card h2 {
+  color: #667eea;
+  margin-bottom: 14px;
+  font-size: 24px;
+}
+
+.notes-list {
+  padding-left: 20px;
+}
+
+.notes-list li {
+  margin: 10px 0;
+  line-height: 1.7;
+}
+
+.notes-list a {
+  color: #4f63d9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.notes-list a:hover {
+  text-decoration: underline;
+}
+
+.muted {
+  color: #888;
+}
+
+.page-footer {
+  margin-top: 28px;
+  text-align: center;
+  color: white;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .notes-card {
+    padding: 20px;
+  }
+}
