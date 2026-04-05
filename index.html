@@ -110,6 +110,23 @@
             color: #666;
             line-height: 1.6;
         }
+        .nav-card a {
+        display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(254, 126, 234, 0.12);
+  border: 1px solid rgba(102, 126, 234, 0.35);
+  color: #050854;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.1;
+  transition: transform 0.15s ease, background 0.15s ease;
+        }
         footer{
             text-align: center;
         }
@@ -240,7 +257,7 @@
             </div>
 
             <a href="#blog" class="nav-card">
-                <h3>📝 博客</h3>
+                <h3>📝 部落格</h3>
                 <p>分享搞7捻3</p>
             </a>
 
@@ -260,7 +277,8 @@
   <p>哈基米今日（<span id="date"></span>）哈气了吗？</p>
   <p>这里原本应该有一段关于我，但哈基米今天决定先鸽着。</p>
 </section>
-
+<section id="blog" class="nav-card">
+    <a href="blog.html">部落格入口</a>
 <section id="contact" class="cnt">
   <h2>抓猫猫</h2>
   <p>到这里去抓</p>
