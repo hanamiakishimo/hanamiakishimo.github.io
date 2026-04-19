@@ -160,4 +160,9 @@
       .grid { grid-template-columns: 1fr; }
       .wrap { width: min(920px, calc(100% - 20px)); padding-top: 24px; }
       .hero, .card { border-radius: 20px; }
+        pre {
+    white-space: pre-wrap;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
+        }
     }
