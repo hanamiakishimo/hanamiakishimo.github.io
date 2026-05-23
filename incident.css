@@ -1,43 +1,104 @@
-/* 赛博故障标题特效 */
+/* --- 1. 全局暗黑终端底座 (必须加，否则白底白字) --- */
+body {
+    background-color: #0a0a0a; /* 极暗的黑底 */
+    color: #e0e0e0;            /* 柔和的灰白字 */
+    font-family: 'Courier New', Courier, monospace; /* 全局等宽字体 */
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    max-width: 800px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #ff4757; /* 警告红 */
+    margin-top: 20px;
+}
+
+/* --- 2. 赛博故障标题 () --- */
 .glitch-title {
-  position: relative;
-  font-family: 'Courier New', Courier, monospace; /* 必须用等宽字体 */
-  font-size: 2.5rem;
-  color: #fff;
-  letter-spacing: 2px;
+    position: relative;
+    font-size: 2.5rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
 .glitch-title::before,
 .glitch-title::after {
-  content: attr(data-text); /* 读取 HTML 里的 data-text 属性 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .glitch-title::before {
-  left: 2px;
-  text-shadow: -2px 0 #ff00c1; /* 品红错位 */
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim 5s infinite linear alternate-reverse;
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
 }
 
-.glitch-title::after {
-  left: -2px;
-  text-shadow: -2px 0 #00fff9; /* 青色错位 */
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim2 5s infinite linear alternate-reverse;
+.glitch-title::after {    left: -2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
-  0% { clip: rect(31px, 9999px, 94px, 0); }
-  20% { clip: rect(85px, 9999px, 12px, 0); }
-  100% { clip: rect(10px, 9999px, 89px, 0); }
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    20% { clip: rect(85px, 9999px, 12px, 0); }
+    100% { clip: rect(10px, 9999px, 89px, 0); }
 }
 @keyframes glitch-anim2 {
-  0% { clip: rect(65px, 9999px, 100px, 0); }
-  20% { clip: rect(25px, 9999px, 60px, 0); }
-  100% { clip: rect(90px, 9999px, 15px, 0); }
+    0% { clip: rect(65px, 9999px, 100px, 0); }
+    20% { clip: rect(25px, 9999px, 60px, 0); }
+    100% { clip: rect(90px, 9999px, 15px, 0); }
 }
+
+/* --- 3. 终端盒子与打字机样式 (补齐) --- */
+.terminal-box {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.05); /* 微弱的绿光 */
+}
+
+.prompt {
+    color: #00ff41; /* 黑客绿 */
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+#terminal-log {
+    white-space: pre-wrap; /* 保留换行符 */
+    color: #ccc;
+    margin: 0;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+    color: #00ff41;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* --- 4. 症状卡片样式 (补齐) --- */
+.card {    margin-top: 30px;
+    padding: 15px;
+    border: 1px dashed #555;
+    color: #888;
+    font-size: 0.9rem;
+      }
