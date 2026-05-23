@@ -102,3 +102,22 @@ h1 {
     color: #888;
     font-size: 0.9rem;
       }
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px; /* 手机端边距收紧 */
+    }
+
+    .glitch-title {
+        font-size: 1.8rem; /* 手机端标题缩小，防止红蓝特效糊掉 */
+        letter-spacing: 1px;
+    }
+
+    .sub-title {
+        font-size: 1rem;
+    }
+
+    .terminal-box {
+        padding: 15px; /* 手机端内边距缩小 */
+        font-size: 0.9rem; /* 终端字体稍微缩小，更有代码感 */
+    }
+}
