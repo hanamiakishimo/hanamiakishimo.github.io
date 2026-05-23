@@ -1,7 +1,7 @@
 <html>
 <head>
-  <link rel="stylesheet" href="style-blog.css">
-
+  <link rel="stylesheet" href="incident.cas">
+  
 </head>
   <body>
     <main>
@@ -46,5 +46,25 @@
       </ol>
     </section>
     </main>
+    <script>
+  // 赛博终端打字机效果
+  const terminalText = document.getElementById('terminal-log');
+  const fullText = terminalText.getAttribute('data-fulltext');
+  let index = 0;
+  
+  function typeWriter() {
+    if (index < fullText.length) {
+      terminalText.innerHTML += fullText.charAt(index);
+      index++;
+      setTimeout(typeWriter, 30); // 30ms 打印一个字，速度可调
+    } else {
+      // 打印完后加个闪烁的光标
+      terminalText.innerHTML += '<span class="cursor">_</span>';
+    }
+  }
+  
+  // 页面加载完后开始打字
+  window.onload = typeWriter;
+    </script>
   </body>
 </html>
