@@ -6,15 +6,6 @@
   <title>球拍</title>
   <link rel="stylesheet" href="style1.css">
   <style>
-    main {
-      overflow-wrap: anywhere;
-    }
-
-    .card h2 {
-      font-size: 1.8rem;
-      margin-bottom: 18px;
-    }
-
     .card h3 {
       margin: 28px 0 14px;
       font-size: 1.35rem;
@@ -34,9 +25,7 @@
       line-height: 1.8;
     }
 
-    .card li {
-      margin: 6px 0;
-    }
+    .card li { margin: 6px 0; }
 
     .card blockquote {
       margin: 16px 0;
@@ -46,9 +35,7 @@
       background: #f7f6ff;
     }
 
-    .card blockquote p:last-child {
-      margin-bottom: 0;
-    }
+    .card blockquote p:last-child { margin-bottom: 0; }
 
     pre {
       overflow-x: auto;
@@ -67,12 +54,7 @@
       font-family: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     }
 
-    p code,
-    li code,
-    h2 code,
-    h3 code,
-    h4 code,
-    blockquote code {
+    p code, li code, h2 code, h3 code, h4 code, blockquote code {
       padding: 0.12em 0.35em;
       border-radius: 5px;
       background: #eef0ff;
@@ -91,35 +73,8 @@
       margin: 22px 0;
     }
 
-    .nav-links {
-      margin-top: 20px;
-    }
-
-    .nav-links p {
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 16px 10px;
-      }
-
-      main {
-        padding: 14px;
-      }
-
-      .card {
-        padding: 18px;
-      }
-
-      .card h2 {
-        font-size: 1.55rem;
-      }
-
-      pre {
-        font-size: 0.86rem;
-      }
-    }
+    .nav-links { margin-top: 20px; }
+    .nav-links p { margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -130,7 +85,7 @@
   <main>
     <div class="card intro-card">
 <blockquote>
-<p><strong>说明</strong></p>
+<p><strong>Draft 说明</strong></p>
 <ul>
 <li>这是 Racket / Lisp 学习笔记，不是严肃历史教材。</li>
 <li><code>Racket → 球拍</code>、<code>car → 汽车</code>、<code>cons → 施工</code>、<code>recursion → 递龟</code> 等均为本篇故意保留的翻译事故 / 梗译。</li>
@@ -164,11 +119,19 @@
 </code></pre>
 <p>这是一个匿名过程。</p>
 <p>它能工作，但暂时没有名字。</p>
+<p>要是组织上决定让它长期担任一个职务，就得给它一个名字。</p>
 <p>一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程——这个过程自己也不知道，自己怎么就要被选到 <code>double</code> 去了。</p>
 <p>于是：</p>
 <pre><code class="language-racket">(define double
   (lambda (x)
     (* x 2)))
+</code></pre>
+<p>这时候事情变成了：</p>
+<pre><code class="language-text">lambda
+→ 原来是无名英雄同志
+
+define double
+→ 正式钦点为 double
 </code></pre>
 <p>中央都决定了：</p>
 <blockquote>
@@ -184,10 +147,11 @@
 <p>大家已经研究决定了。</p>
 </blockquote>
 <p>于是 <code>double</code> 同志正式到岗。</p>
+<p>从现在开始，<code>double</code> 就指向这个过程。</p>
 <pre><code class="language-racket">(double 4)
 ; 8
 </code></pre>
-<p>这就是履职。</p>
+<p>这就是具名过程正式履职。</p>
 <p>所以这里其实有两样东西，不要混在一起：</p>
 <pre><code class="language-racket">(lambda (x)
   (* x 2))
@@ -196,7 +160,7 @@
 <pre><code class="language-racket">(define double ...)
 </code></pre>
 <p>这是<strong>钦点它担任 <code>double</code></strong>。</p>
-<p>球拍只是还提供了一种更短的写法：</p>
+<p>球拍还允许把“造一个过程”和“给它钦点名字”合并写：</p>
 <pre><code class="language-racket">(define (double x)
   (* x 2))
 </code></pre>
@@ -206,10 +170,18 @@
     (* x 2)))
 </code></pre>
 <p>表达的是同一件事。</p>
+<p>一个是：</p>
+<blockquote>
+<p>先出现无名英雄同志，再钦点。</p>
+</blockquote>
+<p>另一个是：</p>
+<blockquote>
+<p>任命书直接写好姓名和岗位。</p>
+</blockquote>
 <p>所以 <code>define</code> 这一节目前只需要记住：</p>
 <pre><code class="language-text">值           → 可以钦点名字
 匿名过程     → 也可以钦点名字
-名字被调用   → 正式履职
+过程站到调用位置 → 正式履职
 </code></pre>
 <p>球拍这里还有一条规矩：</p>
 <blockquote>
@@ -973,7 +945,7 @@ a 被重新编回 comrades
 -5  → 不符合 → 不施工
 2   → 符合 → 重新施工
 </code></pre>
-<p>所以它其实就是第 5 节那套东西的现代化版本：</p>
+<p>所以从名单怎么长出来的角度，可以把它想成第 5 节那套东西的现代化版本：</p>
 <pre><code class="language-text">符合条件
 → cons 回新名单
 
@@ -1040,20 +1012,14 @@ a 被重新编回 comrades
 <pre><code class="language-racket">(foldl cons '() '(1 2 3 4))
 ; '(4 3 2 1)
 </code></pre>
-<p>名单当场倒过来了。</p>
-      <p>这里不是 "foldl" 倒着走了。
-
-同志还是按：
-
-1 → 2 → 3 → 4
-
-这个顺序来报到。
-
-问题出在施工队 "cons"。
-
-它每收到一个新同志，都把她塞到名单最前面：
-
-1 来了
+<p>这里不是 <code>foldl</code> 倒着走了。</p>
+<p>同志还是按：</p>
+<pre><code class="language-text">1 → 2 → 3 → 4
+</code></pre>
+<p>这个顺序来报到。</p>
+<p>问题出在施工队 <code>cons</code>。</p>
+<p>它每收到一个新同志，都把她塞到名单最前面：</p>
+<pre><code class="language-text">1 来了
 → (1)
 
 2 来了
@@ -1064,20 +1030,20 @@ a 被重新编回 comrades
 
 4 来了
 → (4 3 2 1)
-
-所以最后：
-
-'(4 3 2 1)
-
-«同志从左往右来。
-施工队每次都让新人插到队首。
-最后队伍自然整个反过来了。 😭»
-
-所以 "foldl" 的“左”，说的是处理元素的方向。
-
-至于最后结果长什么样：
-
-«要看施工队到底怎么施工。»</p>
+</code></pre>
+<p>所以最后：</p>
+<pre><code class="language-racket">'(4 3 2 1)
+</code></pre>
+<blockquote>
+<p>同志从左往右来。<br />
+施工队每次都让新人插到队首。<br />
+最后队伍自然整个反过来了。 😭</p>
+</blockquote>
+<p>所以 <code>foldl</code> 的“左”，说的是<strong>处理元素的方向</strong>。</p>
+<p>至于最后结果长什么样：</p>
+<blockquote>
+<p>要看施工队到底怎么施工。</p>
+</blockquote>
 <p>所以别把 <code>foldl</code> 背成什么“从左边加括号”。</p>
 <p>先认这条流水线就够：</p>
 <pre><code class="language-text">从左边来一个同志
@@ -1814,7 +1780,7 @@ if / cond
 → 唯一的假值
 
 quote / '
-→ 把表达式作为数据，不继续求值
+→ 把后面的内容作为数据，不求值
 
 let / let*
 → 局部绑定，以及不同的绑定可见顺序
@@ -1823,7 +1789,7 @@ list / '()
 → 列表构造与空表
 
 car / cdr
-→ 取首元素 / 取剩余部分
+→ 在本章这些 list 上：取首元素 / 取剩余部分
 
 cons
 → 构造新的 pair；在这里用来重建 list
