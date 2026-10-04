@@ -326,7 +326,6 @@ define double
 <blockquote>
 <p>注：这里把不同来源的蛤学语料库并表使用，纯属本篇梗化处理。</p>
 </blockquote>
-<p><code>else</code> 必须放在最后。没有 <code>else</code>、且所有条件都得到 <code>#f</code> 时，整个 <code>cond</code> 返回 void 值。</p>
 <h3><code>#&lt;void&gt;</code>：无可奉告</h3>
 <p>然后事情开始危险起来。</p>
 <blockquote>
@@ -346,7 +345,7 @@ define double
 (void? 回答)
 ; #t
 </code></pre>
-<p><code>(void)</code> 可以取得这个值；单独写 <code>void</code> 是过程名。这个值的打印表示通常是：</p>
+<p>在把这个值明确打印出来的场景里，通常会写作：</p>
 <pre><code class="language-text">#&lt;void&gt;
 </code></pre>
 <p>嘴上已经说了。</p>
@@ -370,11 +369,12 @@ define double
   [else
    '另请高明])
 </code></pre>
-<p>打印与返回值要分开看：</p>
-<pre><code class="language-text">打印：无可奉告
-返回：'滋瓷
+<p>嘴上说的是：</p>
+<pre><code class="language-text">无可奉告
 </code></pre>
-<p>交互环境还可能显示这个返回值；那不是代码又调用了一次 <code>displayln</code>。</p>
+<p>交回来的表态却是：</p>
+<pre><code class="language-text">'滋瓷
+</code></pre>
 <p>😭</p>
 <p>记者：</p>
 <blockquote>
@@ -472,7 +472,7 @@ cdr
 ↓
 开始工作
 ↓
-会议结束，临时职务撤销
+会议结束，外面查不到这份临时任命
 </code></pre>
 <h3><code>let*</code>：一个一个研究决定</h3>
 <p>如果要求：</p>
@@ -535,8 +535,10 @@ let*
 临时同志
 ; unbound identifier
 </code></pre>
-<p>会议散了，外面不能直接用这个局部名字开展工作。</p>
-<p>这里说的是名字的作用域，不是会议一散，绑定就一定销毁：如果会议里造了一个过程，再把它交出去，这个闭包仍可以保留并使用相应绑定。<code>define</code> 也可以出现在局部作用域中；“正式 / 临时”只是本篇的记忆梗。</p>
+<p>会议散了。到了外面，再查 <code>临时同志</code>：</p>
+<blockquote>
+<p>查无此人。</p>
+</blockquote>
 <p>所以这一节最后可以收成一句：</p>
 <blockquote>
 <p><code>define</code> 是“大家已经研究决定了”；<br />
@@ -601,7 +603,6 @@ let*
 ; 'a
 </code></pre>
 <p><code>car</code> 取得非空列表的第一个元素。</p>
-<p>先把交通事故和技术动作分清：<code>car</code> 只取首元素，<code>cdr</code> 只取尾部，两者都不修改原名单。“拉走”不是原地删除；原来的 <code>comrades</code> 仍然是那张名单。</p>
 <p>本笔记决定不采用任何合理翻译。</p>
 <blockquote>
 <p><code>car</code>：<strong>汽车。</strong></p>
@@ -624,6 +625,7 @@ let*
 <pre><code class="language-racket">(cdr comrades)
 ; '(b c d)
 </code></pre>
+<p>原来的 <code>comrades</code> 还在，一笔没改。汽车和 <code>cdr</code> 只是来取材料的。</p>
 <p>这就是：</p>
 <blockquote>
 <p>剩下的 comrades。</p>
@@ -668,7 +670,6 @@ a 被重新编回 comrades
 <pre><code class="language-racket">(cons 当前同志 剩下的同志)
 </code></pre>
 <p>重新构造一张名单。</p>
-<p>技术上，<code>cons</code> 新建的是一个 pair；第二个参数是列表时，结果才也是列表。本章这里传入的“剩下的同志”都是列表。</p>
 <h3>没有施工会怎样</h3>
 <p>现在问题来了。</p>
 <p>如果：</p>
@@ -722,7 +723,6 @@ a 被重新编回 comrades
 
     <div class="card">
 <h2>6. recursion：递龟 🐢</h2>
-<p>本章的列表递归以有限、最终以 <code>'()</code> 结尾的 proper list 为输入。每次取 <code>cdr</code>，名单短一位，因此会到达 base case；光写一个停止条件，还不够保证递龟真的能到那里。</p>
 <p>球拍处理完一个同志以后，往往还有：</p>
 <blockquote>
 <p>剩下的 comrades。</p>
@@ -904,14 +904,13 @@ a 被重新编回 comrades
 
     <div class="card">
 <h2>7. 高阶函数与迭代：去城市化工作现代化</h2>
-<p><code>map</code>、<code>filter</code>、<code>foldl</code> 是接收过程参数的高阶过程；<code>lambda</code> 用来构造过程，<code>for</code> / <code>for/list</code> 则是迭代语法形式。它们在这一节合用，不是同一种语法零件。</p>
 <p>前面的名单工作基本依靠手工：</p>
 <pre><code class="language-racket">(car comrades)
 (cdr comrades)
 (cons ...)
 </code></pre>
 <p>汽车负责拉走当前同志，递龟负责把剩下的 comrades 继续往下移交，施工队负责把需要保留的同志重新编回名单。</p>
-<p>工作虽然能做，但每次都手写名单处理，重复代码太多。</p>
+<p>工作虽然能做，但回回都要重新写汽车、施工队和递龟的调度方案。</p>
 <p>于是球拍决定推进现代化。</p>
 <h3><code>lambda</code>：无名英雄同志</h3>
 <pre><code class="language-racket">(lambda (x)
@@ -1088,7 +1087,6 @@ a 被重新编回 comrades
 <blockquote>
 <p><code>for</code> = <strong>佛</strong></p>
 </blockquote>
-<p>普通 <code>for</code> 不收集循环体的结果；正常结束后，它自己返回 void 值。<code>for/list</code> 则把每次循环体最后一个表达式的值收进新列表。</p>
 <p>佛不搞一次性处理。</p>
 <p>佛讲究一个一个渡：</p>
 <pre><code class="language-text">渡 1
@@ -1096,6 +1094,7 @@ a 被重新编回 comrades
 渡 3
 渡 4
 </code></pre>
+<p>佛渡完这一轮，交回来的也是一份无可奉告：<code>void</code>。</p>
 <p>如果渡完以后还要重新形成名单：</p>
 <pre><code class="language-racket">(for/list ([x '(1 2 3 4)])
   (* x 10))
@@ -1159,7 +1158,6 @@ lambda
 
     <div class="card">
 <h2>8. 排序动物园：冒泡、插队、斯大林，以及波波</h2>
-<p>本节数值比较的例子先限定为有限的精确整数列表。座次按非递减顺序安排，也就是从小到大、允许相等。冒泡和插入保留全部元素；后面的 Stalin / Pol Pot 是删除型玩笑算法，不保证保留输入的全部元素。</p>
 <p>前面已经有：</p>
 <pre><code class="language-text">car     → 汽车拉走当前同志
 cdr     → 剩下的 comrades
@@ -1237,7 +1235,7 @@ cons
 <p>属于比较正常的组织工作。</p>
 <h3>8.2 Insertion sort：简单插入，也就是安排插队</h3>
 <p>再来简单插入排序。</p>
-<p>先写一个“把新同志插进已经安排好的队伍”的函数。这里要求传给 <code>insert</code> 的 <code>xs</code> 已经按非递减顺序排好：</p>
+<p>先写一个“把新同志插进已经安排好的队伍”的函数：</p>
 <pre><code class="language-racket">(define (insert x xs)
   (cond
     [(null? xs)
@@ -1310,7 +1308,7 @@ cons
 <p>给定：</p>
 <pre><code class="language-racket">'(1 4 2 5 3 8)
 </code></pre>
-<p>如果要求递增，正常排序会想办法重新排列。</p>
+<p>如果要求从小到大排队，正常排序会想办法重新排列。</p>
 <p>Stalin sort 不这样想。</p>
 <p>它的思路是：</p>
 <blockquote>
@@ -1320,9 +1318,9 @@ cons
 <p>于是：</p>
 <pre><code class="language-text">1   留
 4   留
-2   破坏递增 → 清洗
+2   破坏队形 → 清洗
 5   留
-3   破坏递增 → 清洗
+3   破坏队形 → 清洗
 8   留
 </code></pre>
 <p>结果：</p>
@@ -1353,7 +1351,7 @@ cons
      (stalin-from last
                   (cdr xs))]))
 </code></pre>
-<p>这里使用 <code>&gt;=</code>，相等的同志也保留；结果是非递减，不要求严格递增。<code>last</code> 记录的是最后保留的元素，清洗当前元素时不更新它。</p>
+<p><code>&gt;=</code>：相等的同志也符合方向，可以留下。</p>
 <p>注意这里的关键差别。</p>
 <p>通过审查：</p>
 <pre><code class="language-racket">(cons (car xs) ...)
@@ -1479,7 +1477,6 @@ cond 滋瓷
 不施工
 </code></pre>
 <p>当前同志从来没有重新编回名单。</p>
-<p>准确说，本例每步直接返回递龟的结果，最后落到 <code>'()</code>，所以返回空名单；不能把“没显式写 <code>cons</code>”背成“必定清空列表”。原输入名单也没有被修改。</p>
 <p>所以：</p>
 <pre><code class="language-text">(a b c d)
 ↓
@@ -1723,7 +1720,7 @@ prepared
 <h3>9.2 组织工作现代化</h3>
 <p>但是组织上看完以后认为：</p>
 <blockquote>
-<p>手工递龟重复代码太多，应推进现代化。</p>
+<p>同一套名单工作，不必每次都重新写一遍。应推进现代化。</p>
 </blockquote>
 <p>于是同一项工作重新招标：</p>
 <pre><code class="language-racket">(let* ([clean
@@ -1747,7 +1744,6 @@ prepared
   (list ordered total))
 ; '((0 2 8 10) 20)
 </code></pre>
-<p>这里现代化的是写法和分工，不保证跑得更快：老办法把筛选和乘二合在一次遍历里，新办法先 <code>filter</code>、再 <code>map</code>，分两次遍历并产生中间列表。这个例子中的判断和变换没有副作用，两种写法得到相同的名单。</p>
 <p>各部门分工已经变成：</p>
 <pre><code class="language-text">let*
 → 前一项决定以后，下一项据此办理
@@ -1863,4 +1859,3 @@ sorting
   </main>
 </body>
 </html>
-
